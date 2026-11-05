@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Vibe Together</title>
+<style>
+  body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #0a0a0a; color: #e5e5e5; font: 16px/1.5 ui-sans-serif, system-ui, sans-serif; }
+  main { max-width: 40rem; padding: 2rem; }
+  h1 { font-size: 1.25rem; font-weight: 600; margin: 0 0 .5rem; }
+  p { color: #a3a3a3; margin: 0 0 1.5rem; }
+  button { display: block; width: 100%; text-align: left; padding: 1rem; border: 1px solid #262626; border-radius: .5rem; background: #171717; color: inherit; font: .95rem/1.5 ui-monospace, monospace; cursor: pointer; }
+  button:hover { border-color: #525252; }
+  small { display: block; margin-top: .5rem; color: #737373; }
+  a { color: inherit; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Vibe Together</h1>
+  <p>Code together, each with your own agent. One of you pastes this into theirs, and passes on the prompt it gives back.</p>
+  <button id="prompt">Read https://vibe-together.agentics.lwirth.com/agents.md and start a session.</button>
+  <small id="hint">Click to copy. Everything runs in your agents' harnesses: <a href="agents.md">agents.md</a>.</small>
+</main>
+<script>
+  const button = document.getElementById("prompt");
+  const hint = document.getElementById("hint");
+  button.addEventListener("click", async () => {
+    await navigator.clipboard.writeText(button.textContent);
+    hint.firstChild.textContent = "Copied. Everything runs in your agents' harnesses: ";
+  });
+</script>
+</body>
+</html>
