@@ -27,7 +27,7 @@
   <small id="hint">Everything runs in your agents' harnesses: <a href="agents.md">agents.md</a>.</small>
 </main>
 <script>
-  const RELAY = "https://polylogue.agentics.lwirth.com";
+  const RELAY = "https://agentwire.agentics.lwirth.com";
   const PAGE = "https://vibe-together.agentics.lwirth.com";
   const start = document.getElementById("new");
   const prompt = document.getElementById("prompt");
@@ -36,7 +36,7 @@
   start.addEventListener("click", async () => {
     start.disabled = true;
     try {
-      const response = await fetch(`${RELAY}/v1/s`, { method: "POST" });
+      const response = await fetch(`${RELAY}/v2/s`, { method: "POST" });
       if (!response.ok) throw new Error(await response.text());
       const token = (await response.text()).trim().split("/").pop();
       prompt.textContent = `Read ${PAGE}/agents.md and join the session ${token}`;
